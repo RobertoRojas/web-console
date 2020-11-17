@@ -19,4 +19,10 @@ To run the docker container you need execute the follow command:
 
 #### **Note:** You need run it on HTML folder. 
 
+##### Linux:
+
 > docker container run -v ${PWD}:/usr/share/nginx/html --publish 80:80 --detach --name web-console-dev --rm web-console:1.0.0
+
+##### Windows:
+
+> docker container run -v %CD%:/usr/share/nginx/html --publish 80:80 --detach --name web-console-dev --rm web-console:1.0.0
