@@ -3,10 +3,12 @@ function writeCommand() {
     let shellLines = document.getElementById("shell").getElementsByTagName("div");
     let lastLine = shellLines[shellLines.length - 1];
     let tokens = lastLine.getElementsByTagName("span");
-    
+    tokens[1].innerHTML = command;
 }
 function newLine() {
-
+    command = "";
+    document.getElementById("cursor").remove();
+    document.getElementById("shell").innerHTML = document.getElementById("shell").innerHTML + "<div><span class='yellow_font'>[rrshell@remote ~]$ </span><span></span><span id='cursor'>_</span></div>";
 }
 document.onkeyup = function (e) {
     if(!enableKeyboard) {
@@ -20,16 +22,14 @@ document.onkeyup = function (e) {
     } else {
         switch(c) {
             case "Enter":
-                command = "";
-                document.getElementById('shell').innerHTML = document.getElementById('shell').innerHTML + "<div></div>";
+                newLine();
                 break;
             case "Backspace":
-                command = command.substr(0,command.length - 2);
+                command = command.substr(0, command.length - 1);
                 writeCommand();
                 break;
             default:
                 console.warn("KeyListener: No valid key[" + c + "]");
         }
     }
-    console.log("Command: " + command);
 }
