@@ -24,6 +24,8 @@ document.onkeyup = function (e) {
             case "Enter":
                 newLine();
                 break;
+            case "Escape":
+                command = "";
             case "Backspace":
                 command = command.substr(0, command.length - 1);
                 writeCommand();
