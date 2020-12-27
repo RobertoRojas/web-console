@@ -9,7 +9,7 @@
 
 To can build the development environment you need run the follow command:
 
-> docker build --file Dockerfile -t web-console:latest .
+> docker build --file Dockerfile --tag web-console:latest .
 
 <a name="run"></a>
 
@@ -21,8 +21,8 @@ To run the docker container you need execute the follow command:
 
 ##### Linux:
 
-> docker container run -v ${PWD}/html:/usr/share/nginx/html --publish 80:80 --detach --name web-console-dev --rm web-console:latest
+> docker container run --volume ${PWD}/html:/usr/share/nginx/html --publish 80:80 --detach --name web-console-dev --rm web-console:latest
 
 ##### Windows:
 
-> docker container run -v %CD%:/usr/share/nginx/html --publish 80:80 --detach --name web-console-dev --rm web-console:latest
+> docker container run --volume %CD%:/usr/share/nginx/html --publish 80:80 --detach --name web-console-dev --rm web-console:latest

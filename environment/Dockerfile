@@ -1,1 +1,1 @@
-FROM nginx:1.19.4
+FROM php:7.2.34-apache
