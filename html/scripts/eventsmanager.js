@@ -17,6 +17,11 @@ var commands = [
         }
     }),
     new Command("exit","Close the shell.", function(arguments) {
+        arguments = arguments.join("").trim();
+        if(arguments.length != 0) {
+            showError("This command doesn't accept arguments.");
+            return;
+        } 
         window.close();
     }),
     new Command("help","Show a short description of the commands.", function(arguments) {
@@ -30,15 +35,37 @@ var commands = [
         }
         if(!found) showError("The command <span class='yellow_font'>[" + arguments + "]</span> doesn't exist."); 
     }),
-    new Command("info","Show general information about web-console.", function(arguments) {
+    new Command("info","Show general information about " + shellName + ".", function(arguments) {
+        arguments = arguments.join("").trim();
+        if(arguments.length != 0) {
+            showError("This command doesn't accept arguments.");
+            return;
+        } 
         showMessage("<span class='cyan_font'>Version&nbsp;:</span> " + version);
         showMessage("<span class='cyan_font'>Author&nbsp;&nbsp;:</span> Roberto Rojas");
         showMessage("<span class='cyan_font'>Github&nbsp;&nbsp;:</span> <a class='blue_font' href='https://github.com/RobertoRojas/web-console' target='_blank'>repository</a>");
     }),
     new Command("new","Open a new shell.", function(arguments) {
+        arguments = arguments.join("").trim();
+        if(arguments.length != 0) {
+            showError("This command doesn't accept arguments.");
+            return;
+        } 
         window.open(site,'_blank');
     }),
-    new Command("version","Show the version of the web-console.", function(arguments) {
+    new Command("print","Print a message in the shell.", function(arguments) {
+        arguments = arguments.join(" ").trim();
+        if(arguments == "") {
+            arguments = "&nbsp;";
+        }
+        showMessage(arguments);
+    }),
+    new Command("version","Show the version of the " + shellName + ".", function(arguments) {
+        arguments = arguments.join("").trim();
+        if(arguments.length != 0) {
+            showError("This command doesn't accept arguments.");
+            return;
+        } 
         showMessage(version);
     })
 ];

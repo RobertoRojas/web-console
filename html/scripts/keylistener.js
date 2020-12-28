@@ -12,7 +12,7 @@ function newLine() {
     if(cursor != null) {
         cursor.remove();
     }
-    document.getElementById("shell").innerHTML = document.getElementById("shell").innerHTML + "<div><span class='green_font'>[web-console@remote ~]$ </span><span></span><span id='cursor'>_</span></div>";
+    document.getElementById("shell").innerHTML = document.getElementById("shell").innerHTML + "<div><span class='green_font'>[" + shellName + "@remote ~]$ </span><span></span><span id='cursor'>_</span></div>";
 }
 document.onkeyup = function (e) {
     if(!enableKeyboard) {
