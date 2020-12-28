@@ -35,7 +35,7 @@ var commands = [
         }
         if(!found) showError("The command <span class='yellow_font'>[" + arguments + "]</span> doesn't exist."); 
     }),
-    new Command("info","Show general information about web-console.", function(arguments) {
+    new Command("info","Show general information about " + shellName + ".", function(arguments) {
         arguments = arguments.join("").trim();
         if(arguments.length != 0) {
             showError("This command doesn't accept arguments.");
@@ -54,13 +54,13 @@ var commands = [
         window.open(site,'_blank');
     }),
     new Command("print","Print a message in the shell.", function(arguments) {
-        arguments = arguments.join("").trim();
+        arguments = arguments.join(" ").trim();
         if(arguments == "") {
             arguments = "&nbsp;";
         }
         showMessage(arguments);
     }),
-    new Command("version","Show the version of the web-console.", function(arguments) {
+    new Command("version","Show the version of the " + shellName + ".", function(arguments) {
         arguments = arguments.join("").trim();
         if(arguments.length != 0) {
             showError("This command doesn't accept arguments.");
