@@ -6,19 +6,24 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <script src="scripts/KeyListener.js"></script><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Roboto+Mono:wght@500&family=Share+Tech+Mono&family=Ubuntu+Mono&display=swap" rel="stylesheet"> 
+    <script src="scripts/eventsmanager.js"></script>
+    <script src="scripts/keylistener.js"></script>
+    <script src="scripts/messagemanager.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Roboto+Mono:wght@500&family=Share+Tech+Mono&family=Ubuntu+Mono&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="style/shell.css"/>
     <title>web-console</title>
     <script type="text/javascript">
+        var version = "1.0.0";
         var enableKeyboard = false;
         window.onload = function () {
+            newLine();
             enableKeyboard = true;
         }
     </script>
 </head>
 <body>
     <div id="shell">
-        <div><span class="green_font">[rrshell@remote ~]$ </span><span></span><span id="cursor">_</span></div>
+        
     </div>
 </body>
 </html>

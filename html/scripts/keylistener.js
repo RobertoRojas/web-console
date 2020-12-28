@@ -8,7 +8,10 @@ function writeCommand() {
 }
 function newLine() {
     command = "";
-    document.getElementById("cursor").remove();
+    let cursor = document.getElementById("cursor");
+    if(cursor != null) {
+        cursor.remove();
+    }
     document.getElementById("shell").innerHTML = document.getElementById("shell").innerHTML + "<div><span class='green_font'>[rrshell@remote ~]$ </span><span></span><span id='cursor'>_</span></div>";
 }
 document.onkeyup = function (e) {
@@ -23,6 +26,7 @@ document.onkeyup = function (e) {
     } else {
         switch(c) {
             case "Enter":
+                executeCommand(command);
                 newLine();
                 break;
             case "Escape":
