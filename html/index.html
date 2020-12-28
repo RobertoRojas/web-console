@@ -13,7 +13,12 @@
     <link rel="stylesheet" href="style/shell.css"/>
     <title>web-console</title>
     <script type="text/javascript">
+    
+        var site = "http://" + window.location.hostname;
         var version = "1.0.0";
+    
+    </script>
+    <script type="text/javascript">
         var enableKeyboard = false;
         window.onload = function () {
             newLine();
@@ -23,7 +28,9 @@
 </head>
 <body>
     <div id="shell">
-        
+        <div>Wellcome to web-console.</div>
+        <div>This is a shell simulator.</div>
+        <div>You can use the command 'help' to get all the available commands.</div>
     </div>
 </body>
 </html>

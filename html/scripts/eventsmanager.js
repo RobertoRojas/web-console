@@ -5,7 +5,7 @@ function Command(executable, description, process) {
 }
 
 var commands = [
-    new Command("clean","This command clean the shell.", function(arguments) {
+    new Command("clean","Clean the shell.", function(arguments) {
         arguments = arguments.join("").trim();
         if(arguments.length != 0) {
             showError("This command doesn't accept arguments.");
@@ -16,20 +16,32 @@ var commands = [
             lines[index].remove();
         }
     }),
-    new Command("version","This command show you a the version of the rrshell.", function(arguments) {
-        showMessage(version);
+    new Command("exit","Close the shell.", function(arguments) {
+        window.close();
     }),
-    new Command("help","This command show you a short description of the commands.", function(arguments) {
+    new Command("help","Show a short description of the commands.", function(arguments) {
         arguments = arguments.join("").trim();
         let found = false;
         for (let _command of commands) {
             if(arguments.length == 0 || _command.name == arguments) {
-                showMessage(_command.name + " : " + _command.description);
+                showMessage("<span class='cyan_font'>" + _command.name + "</span> " + _command.description);
                 found = true;
             }
         }
-        if(!found) showError("The command [" + arguments + "] doesn't exist."); 
-    })];
+        if(!found) showError("The command <span class='yellow_font'>[" + arguments + "]</span> doesn't exist."); 
+    }),
+    new Command("info","Show general information about web-console.", function(arguments) {
+        showMessage("<span class='cyan_font'>Version&nbsp;:</span> " + version);
+        showMessage("<span class='cyan_font'>Author&nbsp;&nbsp;:</span> Roberto Rojas");
+        showMessage("<span class='cyan_font'>Github&nbsp;&nbsp;:</span> <a class='blue_font' href='https://github.com/RobertoRojas/web-console' target='_blank'>repository</a>");
+    }),
+    new Command("new","Open a new shell.", function(arguments) {
+        window.open(site,'_blank');
+    }),
+    new Command("version","Show the version of the web-console.", function(arguments) {
+        showMessage(version);
+    })
+];
 
 function executeCommand(command) {
     if(command.length == 0)return;
@@ -42,5 +54,5 @@ function executeCommand(command) {
             break;
         }
     }
-    if(!executed) showError("The command [" + tokens[0] + "] doesn't exist. You can use help to view the available commands."); 
+    if(!executed) showError("The command <span class='yellow_font'>[" + tokens[0] + "]</span> doesn't exist. You can use help to view the available commands."); 
 }
