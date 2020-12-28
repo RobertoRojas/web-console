@@ -18,5 +18,5 @@ fi
 docker container run --volume ${PWD}/html:/var/www/html --publish 80:80 --detach --name web-console-dev --rm web-console:latest > /dev/null;
 [ $? == 0 ] || exit 2;
 echo "* Done";
-firefox "http://localhost/";
+firefox "http://localhost/" &
 exit $?;
