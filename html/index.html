@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <script src="scripts/eventsmanager.js"></script>
+    <script src="scripts/keylistener.js"></script>
+    <script src="scripts/messagemanager.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Roboto+Mono:wght@500&family=Share+Tech+Mono&family=Ubuntu+Mono&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="style/shell.css"/>
+    <title>web-console</title>
+    <script type="text/javascript">
+    
+        var site = "http://" + window.location.hostname;
+        var version = "1.0.0";
+    
+    </script>
+    <script type="text/javascript">
+        var enableKeyboard = false;
+        window.onload = function () {
+            newLine();
+            enableKeyboard = true;
+        }
+    </script>
+</head>
+<body>
+    <div id="shell">
+        <div>Wellcome to web-console.</div>
+        <div>This is a shell simulator.</div>
+        <div>You can use the command 'help' to get all the available commands.</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+* {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.1em;
+    color: #ffffff;
+    background-color: #000000;
+}
+#cursor {
+    animation: blink_cursor 1s infinite;
+}
+.black_font {
+    color: #000000;
+}
+.white_font {
+    color: #ffffff;
+}
+.red_font {
+    color: #ff0000;
+}
+.blue_font {
+    color: #0000ff;
+}
+.green_font {
+    color: #00ff00;
+}
+.magenta_font {
+    color: #ff00ff;
+}
+.cyan_font {
+    color: #00ffff;
+}
+.yellow_font {
+    color: #ffff00;
+}
+.black_background {
+    background-color: #000000;
+}
+.white_background {
+    background-color: #ffffff;
+}
+.red_background {
+    background-color: #ff0000;    
+}
+.blue_background {
+    background-color: #0000ff;    
+}
+.green_background {
+    background-color: #00ff00;    
+}
+.magenta_background {
+    background-color: #ff00ff;    
+}
+.cyan_background {
+    background-color: #00ffff;    
+}
+.yellow_background {
+    background-color: #ffff00;    
+}
+@keyframes blink_cursor {
+    0% {
+        color: #ffffff;
+    }
+    48% {
+        color: #ffffff;
+    }
+    50% {
+        color: #000000;
+    }
+}
