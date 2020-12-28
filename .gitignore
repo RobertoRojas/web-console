@@ -1,2 +1,3 @@
 *.sh
+*test*
 !run_container.sh

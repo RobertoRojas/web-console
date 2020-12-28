@@ -3,6 +3,7 @@ function writeCommand() {
     let shellLines = document.getElementById("shell").getElementsByTagName("div");
     let lastLine = shellLines[shellLines.length - 1];
     let tokens = lastLine.getElementsByTagName("span");
+    command = command.replace(/^\s+/gm,"").replace(/\s+$/gm," ");
     tokens[1].innerHTML = command;
 }
 function newLine() {
