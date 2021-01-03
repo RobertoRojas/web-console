@@ -5,7 +5,7 @@ function Command(executable, description, process) {
 }
 
 var commands = [
-    new Command("clean","Clean the shell.", function(arguments) {
+    new Command("clear","Clear the shell.", function(arguments) {
         arguments = arguments.join("").trim();
         if(arguments.length != 0) {
             showError("This command doesn't accept arguments.");
@@ -53,7 +53,7 @@ var commands = [
         } 
         window.open(site,'_blank');
     }),
-    new Command("print","Print a message in the shell.", function(arguments) {
+    new Command("echo","Print a message in the shell.", function(arguments) {
         arguments = arguments.join(" ").trim();
         if(arguments == "") {
             arguments = "&nbsp;";
