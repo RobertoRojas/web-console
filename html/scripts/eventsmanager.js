@@ -72,7 +72,7 @@ var commands = [
 
 function executeCommand(command) {
     if(command.length == 0)return;
-    let tokens = command.trim().split(" ");
+    let tokens = command.split(" ");
     let executed = false;
     for (let _command of commands) {
         if(tokens[0] === _command.name) {
