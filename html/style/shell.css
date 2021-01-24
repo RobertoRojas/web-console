@@ -1,68 +1,60 @@
 * {
     font-family: 'Share Tech Mono', monospace;
     font-size: 1.1em;
-    color: #ffffff;
-    background-color: #000000;
+    color: #71a4d4;
+    background-color: #072138;
 }
 #cursor {
     animation: blink_cursor 1s infinite;
 }
+html::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.25) 50%), 
+        linear-gradient(90deg, rgba(255, 0, 0, 0.06), 
+        rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}
 .black_font {
-    color: #000000;
+    color: #072138;
 }
 .white_font {
-    color: #ffffff;
+    color: #71a4d4;
 }
 .red_font {
-    color: #ff0000;
+    color: #d63b3b;
 }
 .blue_font {
-    color: #0000ff;
+    color: #0e57f5;
 }
 .green_font {
-    color: #00ff00;
+    color: #51b967;
 }
 .magenta_font {
-    color: #ff00ff;
+    color: #8f51b9;
 }
 .cyan_font {
-    color: #00ffff;
+    color: #169fdf;
 }
 .yellow_font {
-    color: #ffff00;
-}
-.black_background {
-    background-color: #000000;
-}
-.white_background {
-    background-color: #ffffff;
-}
-.red_background {
-    background-color: #ff0000;    
-}
-.blue_background {
-    background-color: #0000ff;    
-}
-.green_background {
-    background-color: #00ff00;    
-}
-.magenta_background {
-    background-color: #ff00ff;    
-}
-.cyan_background {
-    background-color: #00ffff;    
-}
-.yellow_background {
-    background-color: #ffff00;    
+    color: #a4af3e;
 }
 @keyframes blink_cursor {
     0% {
-        color: #ffffff;
+        color: #71a4d4;
     }
     48% {
-        color: #ffffff;
+        color: #71a4d4;
     }
     50% {
-        color: #000000;
+        color: #072138;
     }
 }

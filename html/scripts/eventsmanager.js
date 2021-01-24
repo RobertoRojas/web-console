@@ -67,9 +67,18 @@ var commands = [
             return;
         } 
         showMessage(version);
+    }),
+    new Command("colors","Show the color pallete",function(arguments) {
+        showMessage("<span class='black_font'>black</span>");
+        showMessage("<span class='white_font'>white</span>");
+        showMessage("<span class='red_font'>red</span>");
+        showMessage("<span class='blue_font'>blue</span>");
+        showMessage("<span class='green_font'>green</span>");
+        showMessage("<span class='magenta_font'>magenta</span>");
+        showMessage("<span class='cyan_font'>cyan</span>");
+        showMessage("<span class='yellow_font'>yellow</span>");
     })
 ];
-
 function executeCommand(command) {
     if(command.length == 0)return;
     let tokens = command.split(" ");
