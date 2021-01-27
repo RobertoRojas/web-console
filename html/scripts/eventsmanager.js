@@ -5,7 +5,7 @@ function Command(executable, description, process) {
 }
 
 var commands = [
-    new Command("clean","Clean the shell.", function(arguments) {
+    new Command("clear","Clear the shell.", function(arguments) {
         arguments = arguments.join("").trim();
         if(arguments.length != 0) {
             showError("This command doesn't accept arguments.");
@@ -53,7 +53,7 @@ var commands = [
         } 
         window.open(site,'_blank');
     }),
-    new Command("print","Print a message in the shell.", function(arguments) {
+    new Command("echo","Print a message in the shell.", function(arguments) {
         arguments = arguments.join(" ").trim();
         if(arguments == "") {
             arguments = "&nbsp;";
@@ -67,12 +67,21 @@ var commands = [
             return;
         } 
         showMessage(version);
+    }),
+    new Command("colors","Show the color pallete",function(arguments) {
+        showMessage("<span class='black_font'>black</span>");
+        showMessage("<span class='white_font'>white</span>");
+        showMessage("<span class='red_font'>red</span>");
+        showMessage("<span class='blue_font'>blue</span>");
+        showMessage("<span class='green_font'>green</span>");
+        showMessage("<span class='magenta_font'>magenta</span>");
+        showMessage("<span class='cyan_font'>cyan</span>");
+        showMessage("<span class='yellow_font'>yellow</span>");
     })
 ];
-
 function executeCommand(command) {
     if(command.length == 0)return;
-    let tokens = command.trim().split(" ");
+    let tokens = command.split(" ");
     let executed = false;
     for (let _command of commands) {
         if(tokens[0] === _command.name) {

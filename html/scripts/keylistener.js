@@ -1,10 +1,10 @@
 var command = "";
+var lastCommand = "";
 function writeCommand() {
     let shellLines = document.getElementById("shell").getElementsByTagName("div");
     let lastLine = shellLines[shellLines.length - 1];
     let tokens = lastLine.getElementsByTagName("span");
-    command = command.replace(/^\s+/gm,"").replace(/\s+$/gm," ");
-    tokens[1].innerHTML = command;
+    tokens[1].innerHTML = command.replaceAll(/\s/gm,"&nbsp;");
 }
 function newLine() {
     command = "";
@@ -26,13 +26,18 @@ document.onkeyup = function (e) {
     } else {
         switch(c) {
             case "Enter":
-                executeCommand(command);
+                lastCommand = command;
+                executeCommand(command.trim());
                 newLine();
                 break;
             case "Escape":
                 command = "";
             case "Backspace":
                 command = command.substr(0, command.length - 1);
+                writeCommand();
+                break;
+            case "ArrowUp":
+                command = lastCommand;
                 writeCommand();
                 break;
             default:
