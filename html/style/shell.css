@@ -4,9 +4,6 @@
     color: #71a4d4;
     background-color: #072138;
 }
-#cursor {
-    animation: blink_cursor 1s infinite;
-}
 html::before {
     content: " ";
     display: block;
@@ -22,6 +19,9 @@ html::before {
     z-index: 2;
     background-size: 100% 2px, 3px 100%;
     pointer-events: none;
+}
+#cursor {
+    animation: blink_cursor 1s infinite;
 }
 .black_font {
     color: #072138;
