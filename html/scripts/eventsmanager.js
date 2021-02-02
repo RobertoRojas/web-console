@@ -3,7 +3,6 @@ function Command(executable, description, process) {
     this.description = description;
     this.process = process;
 }
-
 var commands = [
     new Command("clear","Clear the shell.", function(arguments) {
         arguments = arguments.join("").trim();
@@ -27,9 +26,15 @@ var commands = [
     new Command("help","Show a short description of the commands.", function(arguments) {
         arguments = arguments.join("").trim();
         let found = false;
+        let maximumLength = commands[commands.length - 1].name.length;
         for (let _command of commands) {
             if(arguments.length == 0 || _command.name == arguments) {
-                showMessage("<span class='cyan_font'>" + _command.name + "</span> " + _command.description);
+                let auxName = _command.name;
+                while(auxName.length < maximumLength) {
+                    auxName += " ";
+                }
+                auxName = auxName.replaceAll(/\s/gm,"&nbsp;");
+                showMessage("<span class='cyan_font'>" + auxName + " :</span> " + _command.description);
                 found = true;
             }
         }
@@ -77,8 +82,32 @@ var commands = [
         showMessage("<span class='magenta_font'>magenta</span>");
         showMessage("<span class='cyan_font'>cyan</span>");
         showMessage("<span class='yellow_font'>yellow</span>");
+    }),
+    new Command("print","Send to print the page",function(arguments) {
+        window.print();
+    }),
+    new Command("image-list","Display the list of images.",function(arguments) {
+        if(images.length > 0) {
+            images.forEach(image => {
+                showMessage(image.identifier);
+            });
+        } else {
+            showError("Cannot found any image to list."); 
+        }
+    }),
+    new Command("image-show","Show the image.",function(arguments) {
+        arguments = arguments.join(" ").trim();
+        let found = false;
+        for(let image of images) {
+            if(image.identifier == arguments) {
+                showImage(image);
+                found = true;
+            }
+        }
+        if(!found) showError("The image <span class='yellow_font'>[" + arguments + "]</span> doesn't exist."); 
     })
 ];
+commands.sort((_c1, _c2) => _c1.name.length - _c2.name.length);
 function executeCommand(command) {
     if(command.length == 0)return;
     let tokens = command.split(" ");

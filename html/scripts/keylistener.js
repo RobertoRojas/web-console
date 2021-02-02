@@ -4,7 +4,14 @@ function writeCommand() {
     let shellLines = document.getElementById("shell").getElementsByTagName("div");
     let lastLine = shellLines[shellLines.length - 1];
     let tokens = lastLine.getElementsByTagName("span");
-    tokens[1].innerHTML = command.replaceAll(/\s/gm,"&nbsp;");
+    if(/^(.*\w+)(.*)$/gm.test(command)) {
+        let groups = command.match(/(\s*\S+\s*)/gm);
+        let executable = "<span class='magenta_font'>" + groups[0].replaceAll(/\s/gm,"&nbsp;") + "</span>";
+        let arguments = groups.slice(1).join("").replaceAll(/\s/gm,"&nbsp;");
+        tokens[1].innerHTML = executable + arguments;
+    } else {
+        tokens[1].innerHTML = "<span>" + command.replaceAll(/\s/gm,"&nbsp;") + "</span>";
+    }
 }
 function newLine() {
     command = "";
@@ -12,7 +19,7 @@ function newLine() {
     if(cursor != null) {
         cursor.remove();
     }
-    document.getElementById("shell").innerHTML = document.getElementById("shell").innerHTML + "<div><span class='green_font'>[" + shellName + "@remote ~]$ </span><span></span><span id='cursor'>_</span></div>";
+    document.getElementById("shell").innerHTML = document.getElementById("shell").innerHTML + "<div><span class='shell_precommand'>[" + shellName + "@remote ~]$ </span><span class='shell_command'><span></span></span><span id='cursor'>_</span></div>";
 }
 document.onkeyup = function (e) {
     if(!enableKeyboard) {

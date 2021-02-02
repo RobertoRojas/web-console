@@ -1,3 +1,6 @@
+function showImage(image) {
+    document.getElementById("shell").innerHTML = document.getElementById("shell").innerHTML + "<div class='image'><div class='image_picture' style='background-image: url(\"" + image.path + "\");'></div><div class='image_filter'><span>[" + image.identifier + "]</span></div></div>";
+}
 function showMessage(message) {
     document.getElementById("shell").innerHTML = document.getElementById("shell").innerHTML + "<div>" + message + "</div>";
 }
