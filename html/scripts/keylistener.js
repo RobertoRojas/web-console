@@ -5,7 +5,7 @@ function writeCommand() {
     let lastLine = shellLines[shellLines.length - 1];
     let tokens = lastLine.getElementsByTagName("span");
     if(/^(.*\w+)(.*)$/gm.test(command)) {
-        let groups = command.match(/(\s*\w+\s*)/gm);
+        let groups = command.match(/(\s*\S+\s*)/gm);
         let executable = "<span class='magenta_font'>" + groups[0].replaceAll(/\s/gm,"&nbsp;") + "</span>";
         let arguments = groups.slice(1).join("").replaceAll(/\s/gm,"&nbsp;");
         tokens[1].innerHTML = executable + arguments;

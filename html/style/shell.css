@@ -24,6 +24,31 @@ html::before {
     animation: blink_cursor 1s infinite;
     color: #13d8df;
 }
+.image {
+    display: grid;
+    width: 30em;
+    height: 20em;
+    border: 0.2em solid #71a4d4;
+}
+.image div {
+    grid-area: 1 / 1;
+    width: 100%;
+    height: 100%;
+}
+.image_picture {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    filter: grayscale(100%);
+}
+.image_filter {
+    text-align: center;
+    background-color: #71a4d4;
+    opacity: 0.5;
+}
+.image_filter span {
+    opacity: 1;
+}
 .shell_precommand {
     color: #51b967;
 }
