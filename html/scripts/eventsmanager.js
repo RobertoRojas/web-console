@@ -102,9 +102,31 @@ var commands = [
             if(image.identifier == arguments) {
                 showImage(image);
                 found = true;
+                break;
             }
         }
         if(!found) showError("The image <span class='yellow_font'>[" + arguments + "]</span> doesn't exist."); 
+    }),
+    new Command("link-list","Display the list of links.",function(arguments) {
+        if(links.length > 0) {
+            links.forEach(link => {
+                showMessage(link.identifier);
+            });
+        } else {
+            showError("Cannot found any image to list."); 
+        }
+    }),
+    new Command("link-open","Open the link in a new tab.",function(arguments) {
+        arguments = arguments.join(" ").trim();
+        let found = false;
+        for(let link of links) {
+            if(link.identifier == arguments) {
+                window.open(link.value, "_blank");
+                found = true;
+                break;
+            }
+        }
+        if(!found) showError("The link <span class='yellow_font'>[" + arguments + "]</span> doesn't exist."); 
     })
 ];
 commands.sort((_c1, _c2) => _c1.name.length - _c2.name.length);
