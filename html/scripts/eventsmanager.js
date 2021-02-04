@@ -88,45 +88,100 @@ var commands = [
     }),
     new Command("image-list","Display the list of images.",function(arguments) {
         if(images.length > 0) {
-            images.forEach(image => {
-                showMessage(image.identifier);
-            });
+            for (let index = 0; index < images.length; index++) {
+                let image = images[index];
+                showMessage("[<span class='cyan_font'>" + index + "</span>]&nbsp;<span class='cyan_font'>" + image.identifier + "</span>");
+            }
         } else {
             showError("Cannot found any image to list."); 
         }
     }),
-    new Command("image-show","Show the image.",function(arguments) {
-        arguments = arguments.join(" ").trim();
-        let found = false;
-        for(let image of images) {
-            if(image.identifier == arguments) {
-                showImage(image);
-                found = true;
-                break;
-            }
+    new Command("image-show","Show the image by index number.",function(arguments) {
+        if(images.length === 0) {
+            showError("The image list is empty."); 
+            return;
         }
-        if(!found) showError("The image <span class='yellow_font'>[" + arguments + "]</span> doesn't exist."); 
+        arguments = arguments.join(" ").trim();
+        if(!arguments || arguments.length === 0) arguments = Math.floor(Math.random() * (images.length - 0) + 0) + "";
+        if(!/^\d+$/gm.test(arguments)) {
+            showError("You need send a integer as index."); 
+            return;
+        }
+        let index = Number(arguments);
+        if(index >= images.length) {
+            showError("The image index <span class='yellow_font'>[" + index + "]</span> doesn't exist."); 
+        } else {
+            showImage(images[index]);
+        }
     }),
     new Command("link-list","Display the list of links.",function(arguments) {
         if(links.length > 0) {
-            links.forEach(link => {
-                showMessage(link.identifier);
-            });
+            for (let index = 0; index < links.length; index++) {
+                let link = links[index];
+                showMessage("[<span class='cyan_font'>" + index + "</span>]&nbsp;<span class='cyan_font'>" + link.identifier + "</span>");
+            }
         } else {
             showError("Cannot found any image to list."); 
         }
     }),
     new Command("link-open","Open the link in a new tab.",function(arguments) {
-        arguments = arguments.join(" ").trim();
-        let found = false;
-        for(let link of links) {
-            if(link.identifier == arguments) {
-                window.open(link.value, "_blank");
-                found = true;
-                break;
-            }
+        if(links.length === 0) {
+            showError("The image list is empty."); 
+            return;
         }
-        if(!found) showError("The link <span class='yellow_font'>[" + arguments + "]</span> doesn't exist."); 
+        arguments = arguments.join(" ").trim();
+        if(!arguments || arguments.length === 0) arguments = Math.floor(Math.random() * (links.length - 0) + 0) + "";
+        if(!/^\d+$/gm.test(arguments)) {
+            showError("You need send a integer as index."); 
+            return;
+        }
+        let index = Number(arguments);
+        if(index >= links.length) {
+            showError("The image index <span class='yellow_font'>[" + index + "]</span> doesn't exist."); 
+        } else {
+            window.open(links[index].value, "_blank");
+        }
+    }),
+    new Command("blog-list","Display the list of entries in the blog.",function(arguments) {
+        if(blog_entries.length > 0) {
+            for (let index = 0; index < blog_entries.length; index++) {
+                let entry = blog_entries[index];
+                showMessage("[<span class='cyan_font'>" + index + "</span>]&nbsp;<span class='cyan_font'>" + entry.title + "</span>");
+            }
+        } else {
+            showError("Cannot found any image to list."); 
+        }
+    }),
+    new Command("blog-read","Open the blog entry.",function(arguments) {
+        if(blog_entries.length === 0) {
+            showError("The image list is empty."); 
+            return;
+        }
+        arguments = arguments.join(" ").trim();
+        if(!arguments || arguments.length === 0) arguments = Math.floor(Math.random() * (blog_entries.length - 0) + 0) + "";
+        if(!/^\d+$/gm.test(arguments)) {
+            showError("You need send a integer as index."); 
+            return;
+        }
+        let index = Number(arguments);
+        if(index >= blog_entries.length) {
+            showError("The image index <span class='yellow_font'>[" + index + "]</span> doesn't exist."); 
+        } else {
+            blog_entries[index].contents.forEach(content => {
+                switch(content.type) {
+                    case "paragraph":
+                        content.lines.forEach(line => {
+                            showMessage(line);
+                        });
+                        break;
+                    case "image":
+                        showImage(content);
+                        break;
+                    default:
+                        showError("The type [" + content.type + "] is not defined.");
+                }
+            });
+        }
     })
 ];
 commands.sort((_c1, _c2) => _c1.name.length - _c2.name.length);
