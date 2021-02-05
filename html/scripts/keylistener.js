@@ -20,6 +20,7 @@ function newLine() {
         cursor.remove();
     }
     document.getElementById("shell").innerHTML = document.getElementById("shell").innerHTML + "<div><span class='shell_precommand'>[" + shellName + "@remote ~]$ </span><span class='shell_command'><span></span></span><span id='cursor'>_</span></div>";
+    document.getElementById('shell').scrollTop = document.getElementById('shell').scrollHeight;
 }
 document.onkeyup = function (e) {
     if(!enableKeyboard) {

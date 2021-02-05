@@ -5,8 +5,8 @@ class Element {
     }
 }
 var images = [
-    //new Element("dogecoin","images/dogecoin.jpg")
+    new Element("dogecoin","images/dogecoin.jpg")
 ];
 var links = [
-    //new Element("duckduckgo","https://duckduckgo.com")
+    new Element("duckduckgo","https://duckduckgo.com")
 ];
