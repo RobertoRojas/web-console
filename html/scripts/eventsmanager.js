@@ -1,7 +1,9 @@
-function Command(executable, description, process) {
-    this.name = executable;
-    this.description = description;
-    this.process = process;
+class Command {
+    constructor(executable, description, process) {
+        this.name = executable;
+        this.description = description;
+        this.process = process;
+    }
 }
 var commands = [
     new Command("clear","Clear the shell.", function(arguments) {
