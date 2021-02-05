@@ -4,9 +4,5 @@ class Element {
         this.value = value;
     }
 }
-var images = [
-    new Element("dogecoin","images/dogecoin.jpg")
-];
-var links = [
-    new Element("duckduckgo","https://duckduckgo.com")
-];
+var images = [];
+var links = [];
