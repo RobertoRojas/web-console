@@ -169,7 +169,10 @@ var commands = [
         if(index >= blog_entries.length) {
             showError("The image index <span class='yellow_font'>[" + index + "]</span> doesn't exist."); 
         } else {
-            blog_entries[index].contents.forEach(content => {
+            let entry = blog_entries[index];
+            showMessage("[<span class='cyan_font'>" + index + "</span>]&nbsp;<span class='cyan_font'>" + entry.title + "</span>");
+            entry.contents.forEach(content => {
+                showLineBreak();
                 switch(content.type) {
                     case "paragraph":
                         content.lines.forEach(line => {
