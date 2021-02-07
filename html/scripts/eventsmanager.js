@@ -6,7 +6,7 @@ class Command {
     }
 }
 var commands = [
-    new Command("clear","Clear the shell.", function(arguments) {
+    new Command("clear","Clear the <span class='yellow_font'>" + shellName + "</span>.", function(arguments) {
         arguments = arguments.join("").trim();
         if(arguments.length != 0) {
             showError("This command doesn't accept arguments.");
@@ -17,7 +17,7 @@ var commands = [
             lines[index].remove();
         }
     }),
-    new Command("exit","Close the shell.", function(arguments) {
+    new Command("exit","Close the <span class='yellow_font'>" + shellName + "</span>, it cannot close the main <span class='yellow_font'>" + shellName + "</span>.", function(arguments) {
         arguments = arguments.join("").trim();
         if(arguments.length != 0) {
             showError("This command doesn't accept arguments.");
@@ -25,7 +25,7 @@ var commands = [
         } 
         window.close();
     }),
-    new Command("help","Show a short description of the commands.", function(arguments) {
+    new Command("help","Show a short description of the commands. Arguments <span class='magenta_font'>help</span> <span class='blue_font'>command</span>.", function(arguments) {
         arguments = arguments.join("").trim();
         let found = false;
         let maximumLength = commands[commands.length - 1].name.length;
@@ -42,7 +42,7 @@ var commands = [
         }
         if(!found) showError("The command <span class='yellow_font'>[" + arguments + "]</span> doesn't exist."); 
     }),
-    new Command("info","Show general information about " + shellName + ".", function(arguments) {
+    new Command("info","Show general information about <span class='yellow_font'>" + shellName + "</span>.", function(arguments) {
         arguments = arguments.join("").trim();
         if(arguments.length != 0) {
             showError("This command doesn't accept arguments.");
@@ -52,7 +52,7 @@ var commands = [
         showMessage("<span class='cyan_font'>Author&nbsp;&nbsp;:</span> Roberto Rojas");
         showMessage("<span class='cyan_font'>Github&nbsp;&nbsp;:</span> <a class='blue_font' href='https://github.com/RobertoRojas/web-console' target='_blank'>repository</a>");
     }),
-    new Command("new","Open a new shell.", function(arguments) {
+    new Command("new","Open a new <span class='yellow_font'>" + shellName + "</span>.", function(arguments) {
         arguments = arguments.join("").trim();
         if(arguments.length != 0) {
             showError("This command doesn't accept arguments.");
@@ -60,14 +60,14 @@ var commands = [
         } 
         window.open(site,'_blank');
     }),
-    new Command("echo","Print a message in the shell.", function(arguments) {
+    new Command("echo","Print a message in the <span class='yellow_font'>" + shellName + "</span>.", function(arguments) {
         arguments = arguments.join(" ").trim();
         if(arguments == "") {
             arguments = "&nbsp;";
         }
         showMessage(arguments);
     }),
-    new Command("version","Show the version of the " + shellName + ".", function(arguments) {
+    new Command("version","Show the version of the <span class='yellow_font'>" + shellName + "</span>.", function(arguments) {
         arguments = arguments.join("").trim();
         if(arguments.length != 0) {
             showError("This command doesn't accept arguments.");
@@ -98,7 +98,7 @@ var commands = [
             showError("Cannot found any image to list."); 
         }
     }),
-    new Command("image-show","Show the image by index number.",function(arguments) {
+    new Command("image-show","Show an image. Arguments <span class='magenta_font'>image-show</span> <span class='blue_font'>index</span>.",function(arguments) {
         if(images.length === 0) {
             showError("The image list is empty."); 
             return;
@@ -126,7 +126,7 @@ var commands = [
             showError("Cannot found any image to list."); 
         }
     }),
-    new Command("link-open","Open the link in a new tab.",function(arguments) {
+    new Command("link-open","Open the link in a new tab. Arguments <span class='magenta_font'>link-open</span> <span class='blue_font'>index</span>.",function(arguments) {
         if(links.length === 0) {
             showError("The image list is empty."); 
             return;
@@ -154,7 +154,7 @@ var commands = [
             showError("Cannot found any image to list."); 
         }
     }),
-    new Command("blog-read","Open the blog entry.",function(arguments) {
+    new Command("blog-read","Open the blog entry. Arguments <span class='magenta_font'>blog-read</span> <span class='blue_font'>index</span>.",function(arguments) {
         if(blog_entries.length === 0) {
             showError("The image list is empty."); 
             return;

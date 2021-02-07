@@ -8,7 +8,7 @@
     <meta http-equiv="Expires" content="0" />
     <script type="text/javascript">
         var site = "http://" + window.location.hostname;
-        var version = "1.0.0";
+        var version = "1.0.1";
         var shellName = "web-console";
     </script>
     <script src="scripts/blog.js"></script>
@@ -23,9 +23,9 @@
         var enableKeyboard = false;
         window.onload = function () {
             document.title = shellName;
-            showMessage("Welcome to " + shellName + ".");
+            showMessage("Welcome to <span class='yellow_font'>" + shellName + "</span>.");
             showMessage("This is a shell simulator.");
-            showMessage("You can use the command 'help' to get all the available commands.");
+            showMessage("You can use the command <span class='magenta_font'>help</span> to get all the available commands.");
             newLine();
             enableKeyboard = true;
         }
