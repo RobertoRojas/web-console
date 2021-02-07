@@ -25,7 +25,7 @@ var commands = [
         } 
         window.close();
     }),
-    new Command("help","Show a short description of the commands.", function(arguments) {
+    new Command("help","Show a short description of the commands. You can use <span class='magenta_font'>help</span> <span class='blue_font'>command</span>", function(arguments) {
         arguments = arguments.join("").trim();
         let found = false;
         let maximumLength = commands[commands.length - 1].name.length;
@@ -186,6 +186,16 @@ var commands = [
                         showError("The type [" + content.type + "] is not defined.");
                 }
             });
+        }
+    }),
+    new Command("blog-list","Display the list of entries in the blog.",function(arguments) {
+        if(blog_entries.length > 0) {
+            for (let index = 0; index < blog_entries.length; index++) {
+                let entry = blog_entries[index];
+                showMessage("[<span class='cyan_font'>" + index + "</span>]&nbsp;<span class='cyan_font'>" + entry.title + "</span>");
+            }
+        } else {
+            showError("Cannot found any image to list."); 
         }
     })
 ];
