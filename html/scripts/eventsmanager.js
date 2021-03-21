@@ -95,7 +95,7 @@ var commands = [
                 showMessage("[<span class='cyan_font'>" + index + "</span>]&nbsp;<span class='cyan_font'>" + image.identifier + "</span>");
             }
         } else {
-            showError("Cannot found any image to list."); 
+            showError("No image could be found in the list."); 
         }
     }),
     new Command("image-show","Show an image. Arguments <span class='magenta_font'>image-show</span> <span class='blue_font'>index</span>.",function(arguments) {
@@ -123,12 +123,12 @@ var commands = [
                 showMessage("[<span class='cyan_font'>" + index + "</span>]&nbsp;<span class='cyan_font'>" + link.identifier + "</span>");
             }
         } else {
-            showError("Cannot found any image to list."); 
+            showError("No link could be found in the list."); 
         }
     }),
     new Command("link-open","Open the link in a new tab. Arguments <span class='magenta_font'>link-open</span> <span class='blue_font'>index</span>.",function(arguments) {
         if(links.length === 0) {
-            showError("The image list is empty."); 
+            showError("The link list is empty."); 
             return;
         }
         arguments = arguments.join(" ").trim();
@@ -145,31 +145,31 @@ var commands = [
         }
     }),
     new Command("blog-list","Display the list of entries in the blog.",function(arguments) {
-        if(blog_entries.length > 0) {
-            for (let index = 0; index < blog_entries.length; index++) {
-                let entry = blog_entries[index];
+        if(entries.length > 0) {
+            for (let index = 0; index < entries.length; index++) {
+                let entry = entries[index];
                 showMessage("[<span class='cyan_font'>" + index + "</span>]&nbsp;<span class='cyan_font'>" + entry.title + "</span>");
             }
         } else {
-            showError("Cannot found any image to list."); 
+            showError("No entry could be found in the list."); 
         }
     }),
     new Command("blog-read","Open the blog entry. Arguments <span class='magenta_font'>blog-read</span> <span class='blue_font'>index</span>.",function(arguments) {
-        if(blog_entries.length === 0) {
-            showError("The image list is empty."); 
+        if(entries.length === 0) {
+            showError("The entries list is empty."); 
             return;
         }
         arguments = arguments.join(" ").trim();
-        if(!arguments || arguments.length === 0) arguments = Math.floor(Math.random() * (blog_entries.length - 0) + 0) + "";
+        if(!arguments || arguments.length === 0) arguments = Math.floor(Math.random() * (entries.length - 0) + 0) + "";
         if(!/^\d+$/gm.test(arguments)) {
             showError("You need send a integer as index."); 
             return;
         }
         let index = Number(arguments);
-        if(index >= blog_entries.length) {
+        if(index >= entries.length) {
             showError("The image index <span class='yellow_font'>[" + index + "]</span> doesn't exist."); 
         } else {
-            let entry = blog_entries[index];
+            let entry = entries[index];
             showMessage("[<span class='cyan_font'>" + index + "</span>]&nbsp;<span class='cyan_font'>" + entry.title + "</span>");
             entry.contents.forEach(content => {
                 showLineBreak();
