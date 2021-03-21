@@ -111,7 +111,7 @@ var commands = [
         }
         let index = Number(arguments);
         if(index >= images.length) {
-            showError("The image index <span class='yellow_font'>[" + index + "]</span> doesn't exist."); 
+            showError("The image with the index <span class='yellow_font'>[" + index + "]</span> doesn't exist."); 
         } else {
             showImage(images[index]);
         }
@@ -139,7 +139,7 @@ var commands = [
         }
         let index = Number(arguments);
         if(index >= links.length) {
-            showError("The image index <span class='yellow_font'>[" + index + "]</span> doesn't exist."); 
+            showError("The link with the index <span class='yellow_font'>[" + index + "]</span> doesn't exist."); 
         } else {
             window.open(links[index].value, "_blank");
         }
@@ -167,7 +167,7 @@ var commands = [
         }
         let index = Number(arguments);
         if(index >= entries.length) {
-            showError("The image index <span class='yellow_font'>[" + index + "]</span> doesn't exist."); 
+            showError("The entry with the index <span class='yellow_font'>[" + index + "]</span> doesn't exist."); 
         } else {
             let entry = entries[index];
             showMessage("[<span class='cyan_font'>" + index + "</span>]&nbsp;<span class='cyan_font'>" + entry.title + "</span>");

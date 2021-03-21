@@ -43,9 +43,20 @@
             $this->value = $value;
         }
     }
-    $Links = array();
-    $Images = array();
-    $Entries = array();
+    $Links = array(
+        //new Link("identifier","url")
+    );
+    $Images = array(
+        //new Image("identifier","path")
+    );
+    $Entries = array(
+        /*new BlogEntry("title", array(
+            new BlogParagraph(array(
+                "line"
+            )),
+            new BlogImage("identifier", "path")
+        ))*/
+    );
     echo json_encode(array(
         'links' => $Links,
         'images' => $Images,

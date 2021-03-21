@@ -14,6 +14,7 @@
     <script src="scripts/eventsmanager.js"></script>
     <script src="scripts/keylistener.js"></script>
     <script src="scripts/messagemanager.js"></script>
+    <script src="scripts/parameters.js"></script>
     <script src="scripts/restloader.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -25,11 +26,10 @@
             showMessage("Welcome to <span class='yellow_font'>" + shellName + "</span>.");
             showMessage("This is a shell simulator.");
             showMessage("You can use the command <span class='magenta_font'>help</span> to get all the available commands.");
-            newLine();
-            enableKeyboard = true;
         }
     </script>
 </head>
-    <div id="shell"></div>
+<body>
+    <div id="shell"></div>    
 </body>
 </html>
