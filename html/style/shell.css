@@ -99,6 +99,15 @@ html::before {
 .yellow_font {
     color: #a4af3e;
 }
+.box_solid {
+    border: #13d8df 1px solid;
+}
+.box_dotted {
+    border: #13d8df 1px dotted;
+}
+.box_double {
+    border: #13d8df 1px double;
+}
 @keyframes blink_cursor {
     0% {
         color: #13d8df;
