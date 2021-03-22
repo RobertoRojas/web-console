@@ -4,59 +4,52 @@
     header("Access-Control-Allow-Methods: GET");
     header("Access-Control-Max-Age: 300");
     class Element {
-        function __construct($identifier, $value) {
+        protected function __construct($identifier, $value) {
             $this->identifier = $identifier;
             $this->value = $value;
         }
     }
     class Link extends Element {
-        public function __constuct($identifier, $value){ 
+        public function __construct($identifier, $value){ 
             parent::__construct($identifier, $value);
         }
     }
     class Image extends Element {
-        public function __constuct($identifier, $value){ 
+        public function __construct($identifier, $value, $width = 20, $height = 15) { 
             parent::__construct($identifier, $value);
+            $this->width = $width;
+            $this->height = $height;
         }
     }
     class BlogEntry {
-        function __construct($title, $contents) {
+        public function __construct($title, $contents) {
             $this->title = $title;
             $this->contents = $contents;
         }
     }
     class BlogElement {
-        function __construct($type) {
+        protected function __construct($type) {
             $this->type = $type;
         }
     }
     class BlogParagraph extends BlogElement {
-        function __construct($lines) {
+        public function __construct($lines) {
             parent::__construct("paragraph");
             $this->lines = $lines;
         }
     }
     class BlogImage extends BlogElement {
-        function __construct($identifier, $value) {
+        public function __construct($identifier, $value, $width = 20, $height = 15) {
             parent::__construct("image");
             $this->identifier = $identifier;
             $this->value = $value;
+            $this->width = $width;
+            $this->height = $height;
         }
     }
-    $Links = array(
-        //new Link("identifier","url")
-    );
-    $Images = array(
-        //new Image("identifier","path")
-    );
-    $Entries = array(
-        /*new BlogEntry("title", array(
-            new BlogParagraph(array(
-                "line"
-            )),
-            new BlogImage("identifier", "path")
-        ))*/
-    );
+    $Links = array();
+    $Images = array();
+    $Entries = array();
     echo json_encode(array(
         'links' => $Links,
         'images' => $Images,
