@@ -8,14 +8,14 @@
     <meta http-equiv="Expires" content="0" />
     <script type="text/javascript">
         var site = "http://" + window.location.hostname;
-        var version = "1.0.1";
+        var version = "1.0.2";
         var shellName = "web-console";
     </script>
-    <script src="scripts/blog.js"></script>
     <script src="scripts/eventsmanager.js"></script>
-    <script src="scripts/lists.js"></script>
     <script src="scripts/keylistener.js"></script>
     <script src="scripts/messagemanager.js"></script>
+    <script src="scripts/parameters.js"></script>
+    <script src="scripts/restloader.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/shell.css"/>
@@ -26,11 +26,10 @@
             showMessage("Welcome to <span class='yellow_font'>" + shellName + "</span>.");
             showMessage("This is a shell simulator.");
             showMessage("You can use the command <span class='magenta_font'>help</span> to get all the available commands.");
-            newLine();
-            enableKeyboard = true;
         }
     </script>
 </head>
-    <div id="shell"></div>
+<body>
+    <div id="shell"></div>    
 </body>
 </html>
