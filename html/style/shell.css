@@ -48,8 +48,6 @@ html::before {
 }
 .image {
     display: grid;
-    width: 20em;
-    height: 15em;
     border: 0.2em solid #71a4d4;
 }
 .image div {
