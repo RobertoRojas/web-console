@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 echo "Deleting old container: ";
 container_id=$(docker container ls --quiet --all --filter "name=web-console-dev");
 if [ ! -z "$container_id" ]; 
@@ -15,7 +16,7 @@ then
     echo "Cannot find the html path[$html_path]" 1>&2;
     exit 2;
 fi
-docker container run --volume ${PWD}/html:/var/www/html --publish 80:80 --detach --name web-console-dev --rm web-console:latest > /dev/null;
+docker container run --volume ${PWD}/html:/var/www/html --publish 80:80 --detach --name web-console-dev --rm php:7.3-apache > /dev/null;
 [ $? == 0 ] || exit 2;
 echo "* Done";
 firefox "http://localhost/" &
