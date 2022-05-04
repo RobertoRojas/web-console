@@ -19,5 +19,8 @@ fi
 docker container run --volume ${PWD}/html:/var/www/html --publish 80:80 --detach --name web-console-dev --rm php:7.3-apache > /dev/null;
 [ $? == 0 ] || exit 2;
 echo "* Done";
+echo "Waiting for 5 seconds:"
+sleep 5s;
+echo "* Done";
 firefox "http://localhost/" &
 exit $?;
