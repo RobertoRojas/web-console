@@ -72,10 +72,15 @@ var commands = [
         if(arguments.length != 0) {
             showError("This command doesn't accept arguments.");
             return;
-        } 
+        }
         showMessage(version);
     }),
     new Command("colors","Show the color pallete",function(arguments) {
+        arguments = arguments.join("").trim();
+        if(arguments.length != 0) {
+            showError("This command doesn't accept arguments.");
+            return;
+        }
         showMessage("<span class='black_font'>black</span>");
         showMessage("<span class='white_font'>white</span>");
         showMessage("<span class='red_font'>red</span>");
@@ -86,65 +91,53 @@ var commands = [
         showMessage("<span class='yellow_font'>yellow</span>");
     }),
     new Command("print","Send to print the page",function(arguments) {
+        arguments = arguments.join("").trim();
+        if(arguments.length != 0) {
+            showError("This command doesn't accept arguments.");
+            return;
+        }
         window.print();
     }),
-    new Command("image-list","Display the list of images.",function(arguments) {
-        if(images.length > 0) {
-            for (let index = 0; index < images.length; index++) {
-                let image = images[index];
-                showMessage("[<span class='cyan_font'>" + index + "</span>]&nbsp;<span class='cyan_font'>" + image.identifier + "</span>");
+    new Command("blog-languages","Display the list of languages of the blog.",function(arguments) {
+        arguments = arguments.join("").trim();
+        if(arguments.length != 0) {
+            showError("This command doesn't accept arguments.");
+            return;
+        }
+        blog_languages.forEach(language => {
+            showMessage(language);
+        });
+    }),
+    new Command("blog-language-default","Display the default language of the blog.",function(arguments) {
+        arguments = arguments.join("").trim();
+        if(arguments.length != 0) {
+            let default_language = undefined;
+            for (let i = 0; i < blog_languages.length; i++) {
+                if(arguments == blog_languages[i]) {
+                    default_language = blog_languages[i];
+                    break;
+                }
             }
-        } else {
-            showError("No image could be found in the list."); 
-        }
-    }),
-    new Command("image-show","Show an image. Arguments <span class='magenta_font'>image-show</span> <span class='blue_font'>index</span>.",function(arguments) {
-        if(images.length === 0) {
-            showError("The image list is empty."); 
-            return;
-        }
-        arguments = arguments.join(" ").trim();
-        if(!arguments || arguments.length === 0) arguments = Math.floor(Math.random() * (images.length - 0) + 0) + "";
-        if(!/^\d+$/gm.test(arguments)) {
-            showError("You need send a integer as index."); 
-            return;
-        }
-        let index = Number(arguments);
-        if(index >= images.length) {
-            showError("The image with the index <span class='yellow_font'>[" + index + "]</span> doesn't exist."); 
-        } else {
-            showImage(images[index]);
-        }
-    }),
-    new Command("link-list","Display the list of links.",function(arguments) {
-        if(links.length > 0) {
-            for (let index = 0; index < links.length; index++) {
-                let link = links[index];
-                showMessage("[<span class='cyan_font'>" + index + "</span>]&nbsp;<span class='cyan_font'>" + link.identifier + "</span>");
+            if(!default_language) {
+                showError("That language is not valid.");
+                return;
             }
+            blog_default_language = default_language;
         } else {
-            showError("No link could be found in the list."); 
+            showMessage(blog_default_language);
         }
     }),
-    new Command("link-open","Open the link in a new tab. Arguments <span class='magenta_font'>link-open</span> <span class='blue_font'>index</span>.",function(arguments) {
-        if(links.length === 0) {
-            showError("The link list is empty."); 
+    new Command("blog-topics","Display the list of topics of the blog.",function(arguments) {
+        arguments = arguments.join("").trim();
+        if(arguments.length != 0) {
+            showError("This command doesn't accept arguments.");
             return;
         }
-        arguments = arguments.join(" ").trim();
-        if(!arguments || arguments.length === 0) arguments = Math.floor(Math.random() * (links.length - 0) + 0) + "";
-        if(!/^\d+$/gm.test(arguments)) {
-            showError("You need send a integer as index."); 
-            return;
-        }
-        let index = Number(arguments);
-        if(index >= links.length) {
-            showError("The link with the index <span class='yellow_font'>[" + index + "]</span> doesn't exist."); 
-        } else {
-            window.open(links[index].value, "_blank");
-        }
+        blog_topics.forEach(topic => {
+            showMessage(topic);
+        });
     }),
-    new Command("blog-list","Display the list of entries in the blog.",function(arguments) {
+    /*new Command("blog-list","Display the list of entries in the blog.",function(arguments) {
         if(entries.length > 0) {
             for (let index = 0; index < entries.length; index++) {
                 let entry = entries[index];
@@ -187,7 +180,7 @@ var commands = [
                 }
             });
         }
-    })
+    })*/
 ];
 commands.sort((_c1, _c2) => _c1.name.length - _c2.name.length);
 function executeCommand(command) {
