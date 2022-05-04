@@ -1,7 +1,8 @@
+html/blog
 *.jpg
 *.jpge
 *.png
 *.ico
 *.sh
-*test*
 !run_container.sh
+*test*
