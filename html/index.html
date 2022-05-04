@@ -11,11 +11,13 @@
         var version = "1.0.3";
         var shellName = "web-console";
     </script>
+    <script src="scripts/blogloader.js"></script>
     <script src="scripts/eventsmanager.js"></script>
     <script src="scripts/keylistener.js"></script>
+    <script src="scripts/markdownparser.js"></script>
     <script src="scripts/messagemanager.js"></script>
     <script src="scripts/parameters.js"></script>
-    <script src="scripts/restloader.js"></script>
+    <script src="scripts/sha1.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/shell.css"/>
@@ -26,10 +28,13 @@
             showMessage("Welcome to <span class='yellow_font'>" + shellName + "</span>.");
             showMessage("This is a shell simulator.");
             showMessage("You can use the command <span class='magenta_font'>help</span> to get all the available commands.");
+            loadBlogEntries();
+            newLine();
+            enableKeyboard = true;
         }
     </script>
 </head>
 <body>
-    <div id="shell"></div>    
+    <div id="shell"></div>
 </body>
 </html>
