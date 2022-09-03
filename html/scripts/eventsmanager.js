@@ -90,13 +90,8 @@ var commands = [
         showMessage("<span class='cyan_font'>cyan</span>");
         showMessage("<span class='yellow_font'>yellow</span>");
     }),
-    new Command("debug","Debug function, delete before merge to master",function(arguments) {
-        arguments = arguments.join("").trim();
-        if(arguments.length != 0) {
-            showError("This command doesn't accept arguments.");
-            return;
-        }
-        debug();
+    new Command("debug","Debug function, use this to test things",function(arguments) {
+        debug(arguments);
     }),
     /*,
     new Command("blog-languages","Display the list of languages of the blog.",function(arguments) {
