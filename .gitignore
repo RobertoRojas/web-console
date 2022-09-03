@@ -1,8 +1,8 @@
-html/blog
+# Images section
 *.jpg
 *.jpge
 *.png
 *.ico
-*.sh
-!run_container.sh
-*test*
+
+# Cotton section
+.cotton_*
