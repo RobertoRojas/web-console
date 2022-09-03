@@ -90,14 +90,15 @@ var commands = [
         showMessage("<span class='cyan_font'>cyan</span>");
         showMessage("<span class='yellow_font'>yellow</span>");
     }),
-    new Command("print","Send to print the page",function(arguments) {
+    new Command("debug","Debug function, delete before merge to master",function(arguments) {
         arguments = arguments.join("").trim();
         if(arguments.length != 0) {
             showError("This command doesn't accept arguments.");
             return;
         }
-        window.print();
+        debug();
     }),
+    /*,
     new Command("blog-languages","Display the list of languages of the blog.",function(arguments) {
         arguments = arguments.join("").trim();
         if(arguments.length != 0) {
@@ -137,7 +138,7 @@ var commands = [
             showMessage(topic);
         });
     }),
-    /*new Command("blog-list","Display the list of entries in the blog.",function(arguments) {
+    new Command("blog-list","Display the list of entries in the blog.",function(arguments) {
         if(entries.length > 0) {
             for (let index = 0; index < entries.length; index++) {
                 let entry = entries[index];
