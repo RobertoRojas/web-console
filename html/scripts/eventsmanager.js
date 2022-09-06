@@ -81,102 +81,83 @@ var commands = [
             showError("This command doesn't accept arguments.");
             return;
         }
-        showMessage("<span class='black_font'>black</span>");
-        showMessage("<span class='white_font'>white</span>");
-        showMessage("<span class='red_font'>red</span>");
-        showMessage("<span class='blue_font'>blue</span>");
-        showMessage("<span class='green_font'>green</span>");
-        showMessage("<span class='magenta_font'>magenta</span>");
-        showMessage("<span class='cyan_font'>cyan</span>");
-        showMessage("<span class='yellow_font'>yellow</span>");
+        showMessage("<span class='black_font'>black font</span>");
+        showMessage("<span class='white_font'>white font</span>");
+        showMessage("<span class='red_font'>red font</span>");
+        showMessage("<span class='blue_font'>blue font</span>");
+        showMessage("<span class='green_font'>green font</span>");
+        showMessage("<span class='magenta_font'>magenta font</span>");
+        showMessage("<span class='cyan_font'>cyan font</span>");
+        showMessage("<span class='yellow_font'>yellow font</span>");
+        showMessage("<span class='black_back'>black back</span>");
+        showMessage("<span class='white_back'>white back</span>");
+        showMessage("<span class='red_back'>red back</span>");
+        showMessage("<span class='blue_back'>blue back</span>");
+        showMessage("<span class='green_back'>green back</span>");
+        showMessage("<span class='magenta_back'>magenta back</span>");
+        showMessage("<span class='cyan_back'>cyan back</span>");
+        showMessage("<span class='yellow_back'>yellow back</span>");
     }),
     new Command("debug","Debug function, use this to test things",function(arguments) {
         debug(arguments);
     }),
-    /*,
-    new Command("blog-languages","Display the list of languages of the blog.",function(arguments) {
+    new Command("blog-list","Show the topis and the entries of the blog",function(arguments) {
         arguments = arguments.join("").trim();
-        if(arguments.length != 0) {
-            showError("This command doesn't accept arguments.");
-            return;
-        }
-        blog_languages.forEach(language => {
-            showMessage(language);
-        });
-    }),
-    new Command("blog-language-default","Display the default language of the blog.",function(arguments) {
-        arguments = arguments.join("").trim();
-        if(arguments.length != 0) {
-            let default_language = undefined;
-            for (let i = 0; i < blog_languages.length; i++) {
-                if(arguments == blog_languages[i]) {
-                    default_language = blog_languages[i];
-                    break;
+        if (arguments.length !== 0) {
+            if (arguments in blog) {
+                showMessage("<span class='blue_font'>" + arguments + "</span>");
+                for (let kEntry in blog[arguments]) {
+                    showMessage("<span class='cyan_font'>+ " + kEntry + "</span>");
                 }
-            }
-            if(!default_language) {
-                showError("That language is not valid.");
-                return;
-            }
-            blog_default_language = default_language;
-        } else {
-            showMessage(blog_default_language);
-        }
-    }),
-    new Command("blog-topics","Display the list of topics of the blog.",function(arguments) {
-        arguments = arguments.join("").trim();
-        if(arguments.length != 0) {
-            showError("This command doesn't accept arguments.");
-            return;
-        }
-        blog_topics.forEach(topic => {
-            showMessage(topic);
-        });
-    }),
-    new Command("blog-list","Display the list of entries in the blog.",function(arguments) {
-        if(entries.length > 0) {
-            for (let index = 0; index < entries.length; index++) {
-                let entry = entries[index];
-                showMessage("[<span class='cyan_font'>" + index + "</span>]&nbsp;<span class='cyan_font'>" + entry.title + "</span>");
+            } else {
+                showError("Cannot find any topic with the name [" + arguments + "]");
             }
         } else {
-            showError("No entry could be found in the list."); 
-        }
-    }),
-    new Command("blog-read","Open the blog entry. Arguments <span class='magenta_font'>blog-read</span> <span class='blue_font'>index</span>.",function(arguments) {
-        if(entries.length === 0) {
-            showError("The entries list is empty."); 
-            return;
-        }
-        arguments = arguments.join(" ").trim();
-        if(!arguments || arguments.length === 0) arguments = Math.floor(Math.random() * (entries.length - 0) + 0) + "";
-        if(!/^\d+$/gm.test(arguments)) {
-            showError("You need send a integer as index."); 
-            return;
-        }
-        let index = Number(arguments);
-        if(index >= entries.length) {
-            showError("The entry with the index <span class='yellow_font'>[" + index + "]</span> doesn't exist."); 
-        } else {
-            let entry = entries[index];
-            showMessage("[<span class='cyan_font'>" + index + "</span>]&nbsp;<span class='cyan_font'>" + entry.title + "</span>");
-            entry.contents.forEach(content => {
-                showLineBreak();
-                switch(content.type) {
-                    case "paragraph":
-                        content.lines.forEach(line => {
-                            showMessage(line);
-                        });
-                        break;
-                    case "image":
-                        showImage(content);
-                        break;
-                    default:
-                        showError("The type [" + content.type + "] is not defined.");
+            if (Object.getOwnPropertyNames(blog).length != 0) {
+                for (let kTopic in blog) {
+                    showMessage("<span class='blue_font'>" + kTopic + "</span>");
+                    if (Object.getOwnPropertyNames(blog).length == 0) {
+                        showMessage("<span class='yellow_font'>This topic doesn't have any entry</span>");
+                    } else {
+                        for (let kEntry in blog[kTopic]) {
+                            showMessage("<span class='cyan_font'>+ " + kEntry + "</span>");
+                        }
+                    }
                 }
-            });
+            } else {
+                showMessage("<span class='yellow_font'>The blog doesn't have any entry</span>");
+            }
         }
-    })*/
+    }),
+    new Command("blog-read","Show the topis and the entries of the blog",function(arguments) {
+        let topic = null;
+        if (Object.getOwnPropertyNames(blog).length != 0) {
+            if (arguments.length < 1 || arguments[0].length == 0) {
+                let topics = Object.getOwnPropertyNames(blog);
+                topic = topics[Math.floor(Math.random()*topics.length)];
+            } else {
+                topic = arguments[0];
+            }
+            if (topic in blog) {
+                let entry = null;
+                if (arguments.length < 2 || arguments[1].length == 0) {
+                    let entries = Object.getOwnPropertyNames(blog[topic]);
+                    entry = entries[Math.floor(Math.random()*entries.length)];
+                } else {
+                    entry = arguments[1];
+                }
+                if (entry in blog[topic]) {
+                    writeContent(blog[topic][entry]);
+                } else {
+                    showError("Cannot find the entry[" + topic + "][" + entry + "]");
+                }
+            } else {
+                showError("Cannot find the topic[" + topic + "]");
+            }
+        } else {
+            showMessage("<span class='yellow_font'>The blog doesn't have any entry</span>");
+        }
+    })
 ];
 commands.sort((_c1, _c2) => _c1.name.length - _c2.name.length);
 function executeCommand(command) {
