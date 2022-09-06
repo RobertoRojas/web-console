@@ -99,6 +99,30 @@ html::before {
 .yellow_font {
     color: #a4af3e;
 }
+.black_back {
+    background-color: #072138;
+}
+.white_back {
+    background-color: #71a4d4;
+}
+.red_back {
+    background-color: #d63b3b;
+}
+.blue_back {
+    background-color: #0e57f5;
+}
+.green_back {
+    background-color: #51b967;
+}
+.magenta_back {
+    background-color: #8f51b9;
+}
+.cyan_back {
+    background-color: #13d8df;
+}
+.yellow_back {
+    background-color: #a4af3e;
+}
 .box_solid {
     border: #13d8df 1px solid;
 }
