@@ -32,9 +32,9 @@
                 document.getElementById("shell").innerHTML = document.getElementById("shell").innerHTML + "<div><span class='shell_precommand'>[" + shellName + "@remote ~]$ </span><span class='shell_command'><span></span></span>" + command + "</div>";
                 lastCommand = command;
                 executeCommand(command.trim());
-                newLine();
+                newLine(false);
             } else {
-                newLine();
+                newLine(true);
             }
             enableKeyboard = true;
         }

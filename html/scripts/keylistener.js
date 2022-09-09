@@ -13,14 +13,14 @@ function writeCommand() {
         tokens[1].innerHTML = "<span>" + command.replaceAll(/\s/gm,"&nbsp;") + "</span>";
     }
 }
-function newLine() {
+function newLine(move) {
     command = "";
     let cursor = document.getElementById("cursor");
     if(cursor != null) {
         cursor.remove();
     }
-    document.getElementById("shell").innerHTML = document.getElementById("shell").innerHTML + "<div><span class='shell_precommand'>[" + shellName + "@remote ~]$ </span><span class='shell_command'><span></span></span><span id='cursor'>_</span></div>";
-    document.getElementById('shell').scrollTop = document.getElementById('shell').scrollHeight;
+    document.getElementById('shell').innerHTML = document.getElementById('shell').innerHTML + "<div><span class='shell_precommand'>[" + shellName + "@remote ~]$ </span><span class='shell_command'><span></span></span><span id='cursor'>_</span></div>";
+    if (move) document.getElementById('shell').scrollTop = document.getElementById('shell').scrollHeight;
 }
 document.onkeyup = function (e) {
     if(!enableKeyboard) {
@@ -29,14 +29,14 @@ document.onkeyup = function (e) {
     }
     c = e.key.toString();
     if(c.length == 1) {
+        document.getElementById('shell').scrollTop = document.getElementById('shell').scrollHeight;
         command = command.concat(c);
         writeCommand();
     } else {
         switch(c) {
             case "Enter":
                 lastCommand = command;
-                executeCommand(command.trim());
-                newLine();
+                newLine(executeCommand(command.trim()));
                 break;
             case "Escape":
                 command = "";

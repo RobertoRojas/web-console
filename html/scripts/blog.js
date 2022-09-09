@@ -76,7 +76,7 @@ function writeContent(content) {
             showMessage("<span class='yellow_font'>" + line.replace(/^\s*###/g,"") + "</span>");
         } else {
             if (codeblock) {
-                block += line + "<br/>";
+                block += line.replace(/\s/g, '&nbsp;') + "<br/>";
             } else {
                 showMessage(line);
             }
