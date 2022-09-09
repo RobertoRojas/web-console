@@ -22,7 +22,9 @@
             showMessage("Welcome to <span class='yellow_font'>" + shellName + "</span>.");
             showMessage("This is a shell simulator.");
             showMessage("You can use the command <span class='magenta_font'>help</span> to get all the available commands.");
+            showMessage("<span class='yellow_font'>Loading blog:</span>");
             blog = getBlog();
+            showMessage("<span class='cyan_font'>-> Success</span>");
             let urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('topic') != null) {
                 let topic = urlParams.get('topic');

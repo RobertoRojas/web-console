@@ -49,7 +49,7 @@ function writeContent(content) {
     let title = /^\s*#[^#]+/g;
     let subtitle = /^\s*##[^#]+/g;
     let note = /^\s*###[^#]+/g;
-    let code = /^\s*```\s*/g;
+    let code = /^\s*---\s*/g;
     let codeblock = false;
     let block = "";
     content.split("\n").forEach(line => {
