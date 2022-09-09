@@ -6,16 +6,12 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <script type="text/javascript">
-        var site = "http://" + window.location.hostname;
-        var version = "1.0.3";
-        var shellName = "web-console";
-    </script>
+    <script src="scripts/blog.js"></script>
+    <script src="scripts/configuration.js"></script>
+    <script src="scripts/debug.js"></script>
     <script src="scripts/eventsmanager.js"></script>
     <script src="scripts/keylistener.js"></script>
     <script src="scripts/messagemanager.js"></script>
-    <script src="scripts/parameters.js"></script>
-    <script src="scripts/restloader.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/shell.css"/>
@@ -26,10 +22,25 @@
             showMessage("Welcome to <span class='yellow_font'>" + shellName + "</span>.");
             showMessage("This is a shell simulator.");
             showMessage("You can use the command <span class='magenta_font'>help</span> to get all the available commands.");
+            blog = getBlog();
+            let urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('topic') != null) {
+                let topic = urlParams.get('topic');
+                let entry = urlParams.get('entry');
+                if (entry == null) entry = "";
+                let command = "blog-read " + topic + " " + entry;
+                document.getElementById("shell").innerHTML = document.getElementById("shell").innerHTML + "<div><span class='shell_precommand'>[" + shellName + "@remote ~]$ </span><span class='shell_command'><span></span></span>" + command + "</div>";
+                lastCommand = command;
+                executeCommand(command.trim());
+                newLine(false);
+            } else {
+                newLine(true);
+            }
+            enableKeyboard = true;
         }
     </script>
 </head>
 <body>
-    <div id="shell"></div>    
+    <div id="shell"></div>
 </body>
 </html>
