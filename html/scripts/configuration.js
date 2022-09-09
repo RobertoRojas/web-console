@@ -2,9 +2,9 @@
 
 var site = "http://" + window.location.hostname;
 var version = "1.1.0";
-var shellName = "web-console";
+var shellName = "r2-shell";
 
 // Blog configuration
-var blogLang = "";
-var blogOwner = "";
-var blogRepo = "";
+var blogLang = "en";
+var blogOwner = "RobertoRojas";
+var blogRepo = "blog";
